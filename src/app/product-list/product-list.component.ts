@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../../models/Product';
 import { RouterLink } from '@angular/router';
@@ -10,9 +10,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   constructor(public producService: ProductService) {}
   products: Product[] = [];
+  ngOnInit(): void {
+    this.getProducts();
+  }
   getProducts() {
     this.producService.getProducts().subscribe<Product[]>();
   }
