@@ -18,6 +18,7 @@ export class ProductService {
     return this.products.asObservable();
   }
   addProduct(p: Product) {
+    p.id = Date.now();
     const currentList = this.products;
     this.products.next([...currentList.value, p]);
   }
