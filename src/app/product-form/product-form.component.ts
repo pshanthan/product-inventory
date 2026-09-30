@@ -30,7 +30,10 @@ export class ProductFormComponent {
       validators: Validators.required,
     }),
   });
-  onSubmit(p: Product) {
+  onSubmit() {
+    addedProduct = new Product{
+    name = this.productForm.getRawValue().name;
+  }
     this.productService.addProduct(p);
     this.productForm.reset();
   }
