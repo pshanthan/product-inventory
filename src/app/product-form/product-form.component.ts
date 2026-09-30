@@ -31,10 +31,13 @@ export class ProductFormComponent {
     }),
   });
   onSubmit() {
-    addedProduct = new Product{
-    name = this.productForm.getRawValue().name;
-  }
-    this.productService.addProduct(p);
+    const raw = this.productForm.getRawValue();
+    const newProduct: Product = {
+      name: raw.name,
+      price: Number(raw.price),
+      quantity: Number(raw.quantity),
+    };
+    this.productService.addProduct(newProduct);
     this.productForm.reset();
   }
 }
