@@ -14,8 +14,11 @@ import {
 })
 export class ProductFormComponent {
   productForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    quantity: new FormControl('', Validators.required),
+    name: new FormControl('', (Validators.required, Validators.nullValidator)),
+    price: new FormControl('', (Validators.required, Validators.nullValidator)),
+    quantity: new FormControl(
+      '',
+      (Validators.required, Validators.nullValidator),
+    ),
   });
 }
