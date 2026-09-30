@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Product } from '../models/Product';
 })
 export class ProductService {
   constructor() {}
-  products = new BehaviorSubject([
+  private products = new BehaviorSubject([
     {
       name: 'Shirt',
       price: 300,
@@ -16,5 +16,9 @@ export class ProductService {
   ]);
   getProducts(): Observable<Product[]> {
     return this.products.asObservable();
+  }
+  addProduct(p: Product) {
+    const currentList = this.products;
+    this.products.next([...currentList, p]);
   }
 }
