@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -7,13 +7,14 @@ import { Product } from '../models/Product';
 })
 export class ProductService {
   constructor() {}
+  productForm = new BehaviorSubject([
+    {
+      name: 'Shirt',
+      price: 300,
+      quantity: 2,
+    },
+  ]);
   getProducts(): Observable<Product[]> {
-    return of([
-      {
-        name: 'Shirt',
-        price: 300,
-        quantity: 2,
-      },
-    ]);
+    return this.productForm;
   }
 }
