@@ -2,5 +2,5 @@
   <input formControlName="name" alt="Name" />
   <input formControlName="price" alt="Price" />
   <input formControlName="quantity" alt="Quantity" />
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="productForm.invalid">Submit</button>
 </form>
