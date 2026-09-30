@@ -7,7 +7,7 @@ import { Product } from '../models/Product';
 })
 export class ProductService {
   constructor() {}
-  productForm = new BehaviorSubject([
+  products = new BehaviorSubject([
     {
       name: 'Shirt',
       price: 300,
@@ -15,6 +15,6 @@ export class ProductService {
     },
   ]);
   getProducts(): Observable<Product[]> {
-    return this.productForm;
+    return this.products;
   }
 }
