@@ -19,6 +19,6 @@ export class ProductService {
   }
   addProduct(p: Product) {
     const currentList = this.products;
-    this.products.next([...currentList, p]);
+    this.products.next([...currentList.value, p]);
   }
 }
