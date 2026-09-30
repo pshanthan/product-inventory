@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import {
-  Form,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Product } from '../../models/Product';
 
 @Component({
   selector: 'app-product-form',
