@@ -1,4 +1,4 @@
 <div *ngFor="let p of products">
   <div>{{ p.name }} - {{ p.price }} - {{ p.quantity }}</div>
-  <button [routerLink]="['edit', p.id]">Edit</button>
+  <button [routerLink]="['/edit', p.id]">Edit</button>
 </div>
