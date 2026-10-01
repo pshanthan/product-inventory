@@ -7,7 +7,7 @@ import { Product } from '../models/Product';
 })
 export class ProductService {
   constructor() {}
-  private products = new BehaviorSubject([
+  private products = new BehaviorSubject<Product[]>([
     {
       id: 1,
       name: 'Shirt',
