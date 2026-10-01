@@ -15,7 +15,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './product-form.component.css',
 })
 export class ProductFormComponent implements OnInit {
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
   productForm = new FormGroup({
     name: new FormControl('', {
       nonNullable: true,
@@ -30,7 +33,9 @@ export class ProductFormComponent implements OnInit {
       validators: Validators.required,
     }),
   });
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const id = this.activatedRoute.paramMap.get('id');
+  }
   onSubmit() {
     const raw = this.productForm.getRawValue();
     const newProduct: Product = {
