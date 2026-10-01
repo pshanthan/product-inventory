@@ -58,7 +58,12 @@ export class ProductFormComponent implements OnInit {
       price: Number(raw.price),
       quantity: Number(raw.quantity),
     };
-    this.productService.addProduct(newProduct);
+    if (this.editingId) {
+      newProduct.id = this.editingId;
+      this.productService.updateProduct(newProduct);
+    } else {
+      this.productService.addProduct(newProduct);
+    }
     this.productForm.reset();
   }
 }
