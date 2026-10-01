@@ -8,6 +8,7 @@ import {
 import { Product } from '../../models/Product';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
+import { QueueAction } from 'rxjs/internal/scheduler/QueueAction';
 @Component({
   selector: 'app-product-form',
   imports: [ReactiveFormsModule],
@@ -41,7 +42,11 @@ export class ProductFormComponent implements OnInit {
       this.productService.getProducts().subscribe((products) => {
         const found = products.find((p) => p.id === this.editingId);
         if (found) {
-          this.productForm.patchValue(found);
+          this.productForm.patchValue({
+            name: found.name,
+            price: String(found.price),
+            quantity: String(found.quantity),
+          });
         }
       });
     }
