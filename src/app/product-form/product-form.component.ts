@@ -33,12 +33,11 @@ export class ProductFormComponent implements OnInit {
       validators: Validators.required,
     }),
   });
+  editingId : number | null = null;
   ngOnInit(): void {
-    const editId: number | null = this.activatedRoute.snapshot.paramMap.get(
-      'id',
-    ) as number;
-    this.productService.getProducts().subscribe((p) => p.id === editId);
-  }
+     this.editingId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+     this.productService.getProducts().subscribe((p) => p))
+    }
   onSubmit() {
     const raw = this.productForm.getRawValue();
     const newProduct: Product = {
