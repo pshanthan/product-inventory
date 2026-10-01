@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css',
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit {
   constructor(private productService: ProductService) {}
   productForm = new FormGroup({
     name: new FormControl('', {
@@ -30,6 +30,7 @@ export class ProductFormComponent {
       validators: Validators.required,
     }),
   });
+  ngOnInit(): void {}
   onSubmit() {
     const raw = this.productForm.getRawValue();
     const newProduct: Product = {
