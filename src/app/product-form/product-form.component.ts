@@ -34,7 +34,7 @@ export class ProductFormComponent implements OnInit {
     }),
   });
   ngOnInit(): void {
-    const id = this.activatedRoute.paramMap.get('id');
+     id : number | null = this.activatedRoute.paramMap.get('id');
   }
   onSubmit() {
     const raw = this.productForm.getRawValue();
